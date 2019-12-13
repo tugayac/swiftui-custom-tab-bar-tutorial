@@ -10,11 +10,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "clock.fill") // 1
-            Text("Recents")
-                .font(.caption) // 2
-        }.foregroundColor(Color(UIColor.systemGray)) // 3
+        HStack(alignment: .lastTextBaseline) {
+            CustomTabBarItem(iconName: "star.fill", label: "Favorites")
+            CustomTabBarItem(iconName: "clock.fill", label: "Recents")
+            CustomTabBarItem(iconName: "person.crop.circle", label: "Contacts")
+            CustomTabBarItem(iconName: "circle.grid.3x3.fill", label: "Keypad")
+            CustomTabBarItem(iconName: "recordingtape", label: "Voicemail")
+        }.frame(maxWidth: .infinity)
     }
 }
 

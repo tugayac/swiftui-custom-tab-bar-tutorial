@@ -13,6 +13,7 @@
 		AE17C96123A303EE00C15EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE17C96023A303EE00C15EB6 /* Assets.xcassets */; };
 		AE17C96423A303EE00C15EB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE17C96323A303EE00C15EB6 /* Preview Assets.xcassets */; };
 		AE17C96723A303EE00C15EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE17C96523A303EE00C15EB6 /* LaunchScreen.storyboard */; };
+		AE17C96F23A4277200C15EB6 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE17C96E23A4277200C15EB6 /* CustomTabBarItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AE17C96323A303EE00C15EB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AE17C96623A303EE00C15EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE17C96823A303EE00C15EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE17C96E23A4277200C15EB6 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				AE17C95A23A303EB00C15EB6 /* AppDelegate.swift */,
 				AE17C95C23A303EB00C15EB6 /* SceneDelegate.swift */,
+				AE17C96E23A4277200C15EB6 /* CustomTabBarItem.swift */,
 				AE17C95E23A303EB00C15EB6 /* ContentView.swift */,
 				AE17C96023A303EE00C15EB6 /* Assets.xcassets */,
 				AE17C96523A303EE00C15EB6 /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				AE17C95B23A303EB00C15EB6 /* AppDelegate.swift in Sources */,
 				AE17C95D23A303EB00C15EB6 /* SceneDelegate.swift in Sources */,
 				AE17C95F23A303EB00C15EB6 /* ContentView.swift in Sources */,
+				AE17C96F23A4277200C15EB6 /* CustomTabBarItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
