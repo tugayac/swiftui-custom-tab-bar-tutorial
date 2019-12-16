@@ -13,19 +13,21 @@ struct CustomTabBarItem: View {
     let label: String
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             Image(systemName: iconName)
+                .frame(minWidth: 25, minHeight: 25) // 1
             Text(label)
                 .font(.caption)
         }
+        .padding([.top, .bottom], 5) // 2
         .foregroundColor(Color(UIColor.systemGray))
-        .frame(maxWidth: .infinity) // 1
+        .frame(maxWidth: .infinity)
     }
 }
 
 struct CustomTabBarItem_Previews: PreviewProvider {
     static var previews: some View {
         CustomTabBarItem(iconName: "clock.fill", label: "Recents")
-            .previewLayout(.fixed(width: 80, height: 80)) // 2
+            .previewLayout(.fixed(width: 80, height: 80))
     }
 }

@@ -44,6 +44,7 @@
 			children = (
 				AE17C95923A303EB00C15EB6 /* SwiftUICustomTabBar */,
 				AE17C95823A303EB00C15EB6 /* Products */,
+				AE5CA6BB23A441CB001AEBC1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +79,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AE5CA6BB23A441CB001AEBC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -94,6 +102,8 @@
 			dependencies = (
 			);
 			name = SwiftUICustomTabBar;
+			packageProductDependencies = (
+			);
 			productName = SwiftUICustomTabBar;
 			productReference = AE17C95723A303EB00C15EB6 /* SwiftUICustomTabBar.app */;
 			productType = "com.apple.product-type.application";
@@ -122,6 +132,8 @@
 				Base,
 			);
 			mainGroup = AE17C94E23A303EB00C15EB6;
+			packageReferences = (
+			);
 			productRefGroup = AE17C95823A303EB00C15EB6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
