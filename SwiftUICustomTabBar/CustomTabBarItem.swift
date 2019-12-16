@@ -11,17 +11,22 @@ import SwiftUI
 struct CustomTabBarItem: View {
     let iconName: String
     let label: String
+    var onTap: () -> Void = {} // 1
     
     var body: some View {
         VStack(alignment: .center) {
             Image(systemName: iconName)
-                .frame(minWidth: 25, minHeight: 25) // 1
+                .frame(minWidth: 25, minHeight: 25)
             Text(label)
                 .font(.caption)
         }
-        .padding([.top, .bottom], 5) // 2
+        .padding([.top, .bottom], 5)
         .foregroundColor(Color(UIColor.systemGray))
         .frame(maxWidth: .infinity)
+        .contentShape(Rectangle()) // 3
+        .onTapGesture { // 2
+            self.onTap()
+        }
     }
 }
 
