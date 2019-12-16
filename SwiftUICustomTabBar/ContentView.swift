@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection: Int = 0 // 1
+    @State private var selection: Int = 0
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) { // 2
-            ZStack { // 3
+        VStack(alignment: .center, spacing: 0) {
+            ZStack {
                 if (selection == 0) {
                     favoritesContent()
                 } else if (selection == 1) {
@@ -29,19 +29,24 @@ struct ContentView: View {
             HStack(alignment: .lastTextBaseline) {
                 CustomTabBarItem(iconName: "star.fill",
                                  label: "Favorites",
-                                 onTap: { self.selection = 0 }) // 4
+                                 selection: $selection,
+                                 tag: 0) // 1
                 CustomTabBarItem(iconName: "clock.fill",
                                  label: "Recents",
-                                 onTap: { self.selection = 1 })
+                                 selection: $selection,
+                                 tag: 1)
                 CustomTabBarItem(iconName: "person.crop.circle",
                                  label: "Contacts",
-                                 onTap: { self.selection = 2 })
+                                 selection: $selection,
+                                 tag: 2)
                 CustomTabBarItem(iconName: "circle.grid.3x3.fill",
                                  label: "Keypad",
-                                 onTap: { self.selection = 3 })
+                                 selection: $selection,
+                                 tag: 3)
                 CustomTabBarItem(iconName: "recordingtape",
                                  label: "Voicemail",
-                                 onTap: { self.selection = 4 })
+                                 selection: $selection,
+                                 tag: 4)
             }
             .frame(maxWidth: .infinity)
             .background(
