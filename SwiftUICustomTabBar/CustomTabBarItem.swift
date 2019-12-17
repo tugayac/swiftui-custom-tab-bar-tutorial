@@ -8,11 +8,24 @@
 
 import SwiftUI
 
-struct CustomTabBarItem: View {
+struct CustomTabBarItem<Content: View>: View { // 2
     let iconName: String
     let label: String
-    let selection: Binding<Int> // 1
-    let tag: Int // 2
+    let selection: Binding<Int>
+    let tag: Int
+    let content: () -> Content
+    
+    init(iconName: String,
+         label: String,
+         selection: Binding<Int>,
+         tag: Int,
+         @ViewBuilder _ content: @escaping () -> Content) { // 1
+        self.iconName = iconName
+        self.label = label
+        self.selection = selection
+        self.tag = tag
+        self.content = content
+    }
     
     var body: some View {
         VStack(alignment: .center) {
@@ -22,12 +35,17 @@ struct CustomTabBarItem: View {
                 .font(.caption)
         }
         .padding([.top, .bottom], 5)
-        .foregroundColor(fgColor()) // 4
+        .foregroundColor(fgColor())
         .frame(maxWidth: .infinity)
         .contentShape(Rectangle())
-        .onTapGesture {
-            self.selection.wrappedValue = self.tag // 3
-        }
+        .onTapGesture { self.selection.wrappedValue = self.tag }
+        .preference(key: TabBarPreferenceKey.self,
+                    value: TabBarPreferenceData(
+                        tabBarItemData: [TabBarItemData(tag: tag,
+                                                        content: AnyView(self.content()) // 3
+                        )]
+                    )
+        )
     }
     
     private func fgColor() -> Color {
@@ -40,7 +58,9 @@ struct CustomTabBarItem_Previews: PreviewProvider {
     static var selectionBinding = Binding<Int>(get: { selection }, set: { selection = $0 })
     
     static var previews: some View {
-        CustomTabBarItem(iconName: "clock.fill", label: "Recents", selection: selectionBinding, tag: 0)
-            .previewLayout(.fixed(width: 80, height: 80))
+        CustomTabBarItem(iconName: "clock.fill", label: "Recents", selection: selectionBinding, tag: 0) {
+            Text("Empty View")
+        }
+        .previewLayout(.fixed(width: 80, height: 80))
     }
 }
