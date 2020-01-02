@@ -14,7 +14,7 @@ struct TabBarItemData {
 }
 
 struct TabBarPreferenceData {
-    var tabBarBounds: CGRect? = nil
+    var tabBarBounds: Anchor<CGRect>? = nil // 1
     var tabBarItemData: [TabBarItemData] = []
 }
 
@@ -82,15 +82,11 @@ struct ContentView: View {
                 }
             )
             .background(Color(UIColor.systemGray6))
-            .overlay(
-                GeometryReader { geometry in
-                    Rectangle()
-                        .fill(Color.clear)
-                        .preference(key: TabBarPreferenceKey.self,
-                                    value: TabBarPreferenceData(tabBarBounds: geometry.frame(in: .named("customTabBar")))
-                        )
-                }
-            )
+            .transformAnchorPreference(key: TabBarPreferenceKey.self,
+                                       value: .bounds,
+                                       transform: { (value: inout TabBarPreferenceData, anchor: Anchor<CGRect>) in
+                                        value.tabBarBounds = anchor
+            }) // 2
         }
         .frame(maxHeight: .infinity, alignment: .bottom)
         .overlayPreferenceValue(TabBarPreferenceKey.self) { (preferences: TabBarPreferenceData) in
@@ -98,24 +94,23 @@ struct ContentView: View {
                 self.createTabBarContentOverlay(geometry, preferences)
             }
         }
-        .coordinateSpace(name: "customTabBar")
     }
     
     private func createTabBarContentOverlay(_ geometry: GeometryProxy,
                                             _ preferences: TabBarPreferenceData) -> some View {
-        let tabBarBounds = preferences.tabBarBounds != nil ? preferences.tabBarBounds! : .zero // 1
-        let contentToDisplay = preferences.tabBarItemData.first(where: { $0.tag == self.selection }) // 2
+        let tabBarBounds = preferences.tabBarBounds != nil ? geometry[preferences.tabBarBounds!] : .zero // 3
+        let contentToDisplay = preferences.tabBarItemData.first(where: { $0.tag == self.selection })
         
         return ZStack {
-            if contentToDisplay == nil { // 3
+            if contentToDisplay == nil {
                 Text("Empty View")
             } else {
-                contentToDisplay!.content // 4
+                contentToDisplay!.content
             }
         }
         .frame(width: geometry.size.width,
                height: geometry.size.height - tabBarBounds.size.height,
-               alignment: .center) // 5
+               alignment: .center)
         .position(x: geometry.size.width / 2,
                   y: (geometry.size.height - tabBarBounds.size.height) / 2) // 6
     }

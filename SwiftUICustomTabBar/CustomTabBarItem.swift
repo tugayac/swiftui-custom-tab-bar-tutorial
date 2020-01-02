@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CustomTabBarItem<Content: View>: View { // 2
+struct CustomTabBarItem<Content: View>: View {
     let iconName: String
     let label: String
     let selection: Binding<Int>
@@ -19,7 +19,7 @@ struct CustomTabBarItem<Content: View>: View { // 2
          label: String,
          selection: Binding<Int>,
          tag: Int,
-         @ViewBuilder _ content: @escaping () -> Content) { // 1
+         @ViewBuilder _ content: @escaping () -> Content) {
         self.iconName = iconName
         self.label = label
         self.selection = selection
